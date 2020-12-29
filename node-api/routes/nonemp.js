@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const users = require('../middlewares/user');
+const nonemp = require('../middlewares/nonemp');
 
-router.get('/getAllUser' , async (req, res) => {
+router.get('/getNonEmps' , async (req, res) => {
     try {
 
-        const result = await users.getusers();
+        const result = await nonemp.getNonEmps();
         
         res.send(result).status(200);
 
@@ -14,35 +14,10 @@ router.get('/getAllUser' , async (req, res) => {
     }
 });
 
-router.get('/getUser/:id' , async (req, res) => {
+router.get('/getNonEmp/:id' , async (req, res) => {
     try {
 
-        const result = await users.getuser(req.params.id);
-        
-        res.send(result).status(200);
-
-    } catch (error) {
-        res.send(error.message).status(500);
-    }
-});
-
-
-router.post('/addUser',async(req, res)=>{
-    try {
-
-        const result = await users.addUser(req.body);
-        
-        res.send(result).status(200);
-
-    } catch (error) {
-        res.send(error.message).status(500);
-    }
-});
-
-router.put('/updateUser',async(req, res)=>{
-    try {
-
-        const result = await users.updateUser(req.body);
+        const result = await nonemp.getNonEmp(req.params.id);
         
         res.send(result).status(200);
 
@@ -52,10 +27,35 @@ router.put('/updateUser',async(req, res)=>{
 });
 
 
-router.delete('/deleteUser/:id',async(req, res)=>{
+router.post('/addNonEmp',async(req, res)=>{
+    try {
+
+        const result = await nonemp.addNonEmp(req.body);
+        
+        res.send(result).status(200);
+
+    } catch (error) {
+        res.send(error.message).status(500);
+    }
+});
+
+router.put('/updateNonEmp',async(req, res)=>{
+    try {
+
+        const result = await nonemp.updateNonEmp(req.body);
+        
+        res.send(result).status(200);
+
+    } catch (error) {
+        res.send(error.message).status(500);
+    }
+});
+
+
+router.delete('/deleteNonEmp/:id',async(req, res)=>{
     try {
         //console.log(req.params.id);
-        const result = await users.deleteUser(req.params.id);
+        const result = await nonemp.deleteNonEmp(req.params.id);
         
         res.send(result).status(200);
 
@@ -67,4 +67,3 @@ router.delete('/deleteUser/:id',async(req, res)=>{
 
 
 module.exports = router;
-
