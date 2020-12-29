@@ -35,10 +35,10 @@ let getEmployee = async(id)=>{
         let sql = "SELECT * FROM Employees WHERE EmpId = ?";
 
         const result = await conn.queryAsync(sql,[id]);
-
+  
         await conn.endAsync();
 
-        return result;
+        return result[0];
         
     } catch (error) {
         console.log(error);

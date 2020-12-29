@@ -38,7 +38,7 @@ let getNonEmp = async(id)=>{
 
         await conn.endAsync();
 
-        return result;
+        return result[0];
         
     } catch (error) {
         console.log(error);
