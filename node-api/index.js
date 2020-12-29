@@ -50,4 +50,4 @@ app.listen(port,()=>{
 //http://localhost:3000/api/message/addMessage
 //http://localhost:3000/api/message/updateMessage
 //http://localhost:3000/api/message/deleteMessage
-//http://localhost:3000/api/message/getMessageByEmpId
+

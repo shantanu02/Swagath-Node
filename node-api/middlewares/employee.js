@@ -5,7 +5,7 @@ const config = require('../config/dbconfig');
 Promise.promisifyAll(require("mysql/lib/Connection").prototype);
 Promise.promisifyAll(require("mysql/lib/Pool").prototype);
 
-let getEmployees = async()=>{
+let getEmployees = async ()=>{
 
     try {
         const conn =  mysql.createConnection(config);

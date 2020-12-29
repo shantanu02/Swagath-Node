@@ -4,7 +4,7 @@ const employee = require('../middlewares/employee');
 
 router.get('/getEmployees' , async (req, res) => {
     try {
-
+            
         const result = await employee.getEmployees();
         
         res.send(result).status(200);

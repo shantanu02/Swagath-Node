@@ -17,6 +17,8 @@ create table Employees(
 create table NonEmployees(
 	PesrsonId varchar(20) primary key not null,
     PersonName varchar(50),
+    PersonEmail varchar(50),
+    PersonAddress varchar(100),
     PersonPhone varchar(50),
     PersonPhoto BLOB,
     PersonType enum('guest','student','vips','visitor')
@@ -44,6 +46,10 @@ truncate Employees;
 truncate NonEmployees;
 truncate Message;
 
+#drop queries
+drop table Employees;
+drop table NonEmployees;
+drop table Message;
 
 
 #Select Queries
