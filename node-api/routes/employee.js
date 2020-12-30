@@ -18,7 +18,7 @@ router.get('/getEmployee/:id' , async (req, res) => {
     try {
 
         const result = await employee.getEmployee(req.params.id);
-        
+        console.log(result);
         res.send(result).status(200);
 
     } catch (error) {

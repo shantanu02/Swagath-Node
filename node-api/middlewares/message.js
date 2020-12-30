@@ -124,6 +124,28 @@ let updateMessage = async(input)=>{
     }
 };
 
+let updateMessageStatus = async(input)=>{
+
+    try {
+        const conn =  mysql.createConnection(config);
+        
+        await conn.connectAsync();
+
+        let sql = "UPDATE Message SET MsgStatus=? WHERE MsgId=?";
+
+        const result = await conn.queryAsync(sql,[input.MsgStatus,input.MsgId]);
+
+        await conn.endAsync();
+
+        return result;
+        
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+
+
 let deleteMessage = async(id)=>{
 
     try {
@@ -146,4 +168,4 @@ let deleteMessage = async(id)=>{
 
 
 
-module.exports = {getMessages,getMessage,getMessageByEmpId,addMessage,updateMessage,deleteMessage} ;
+module.exports = {getMessages,getMessage,getMessageByEmpId,addMessage,updateMessage,deleteMessage,updateMessageStatus} ;
