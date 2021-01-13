@@ -66,7 +66,7 @@ router.put('/updateMessage',async(req, res)=>{
 router.put('/updateMessageStatus',async(req, res)=>{
     try {
 
-        console.log(req.body);
+        //console.log(req.body);
         const result = await message.updateMessage(req.body);
         
         res.send(result).status(200);

@@ -1,6 +1,8 @@
 create database Swagath;
 use Swagath;
 
+
+
 #Table for user 
 create table Employees(
 	EmpId varchar(20) primary key not null,
@@ -15,8 +17,10 @@ create table Employees(
 );
 
 create table NonEmployees(
-	PesrsonId varchar(20) primary key not null,
+	PersonId int primary Key auto_increment,
     PersonName varchar(50),
+    PersonEmail varchar(50),
+    PersonAddress varchar(100),
     PersonPhone varchar(50),
     PersonPhoto BLOB,
     PersonType enum('guest','student','vips','visitor')
@@ -26,7 +30,7 @@ create table NonEmployees(
 create table Message(	
 	MsgId int primary key auto_increment not null,
 	MsgDesc varchar(1000),
-	PesrsonId  varchar(20),
+	PersonId  int,
 	EmpId varchar(20),
 	MsgType enum('audio','text','audioText'),
 	MsgDateTime DATETIME DEFAULT CURRENT_TIMESTAMP ,
@@ -35,16 +39,24 @@ create table Message(
 );
 
 #Insert Queries
-insert into Employees Values('105','Shantanu','S@gmail.com','1234567890','A1','C02',null,1);
-insert into NonEmployees Values('134','Vipul','1234567890',null,2);
-insert into Message(MsgId,MsgDesc,PesrsonId,EmpId,MsgType,MsgStatus) Values(1,'Meet me on 10th Dec','134','105',2,2);
+insert into Employees Values('107','Shantanu13','S@gmail.com','1234567890','A2','C03',null,1);
+insert into NonEmployees Values('1','Vipul','vipul@gmail.com','Pune maha','1234567890',null,2);
+insert into Message(MsgId,MsgDesc,PersonId,EmpId,MsgType,MsgStatus) Values(7,'Meet me on 10th Dec',1,'107',2,2);
+insert into Message(MsgId,MsgDesc,PersonId,EmpId,MsgType,MsgStatus) Values(2,'Messsage is Working',1,'107',2,2);
 
 #truncate Queries
 truncate Employees;
 truncate NonEmployees;
 truncate Message;
 
+#drop queries
+drop table Employees;
+drop table NonEmployees;
+drop table Message;
 
+Select Message.MsgId,Message.MsgDesc,Message.PersonId,Message.EmpId,
+Message.MsgType,Message.MsgDateTime,Message.MsgStatus,NonEmployees.PersonName
+ from Message,NonEmployees where Message.EmpId = 107 and Message.PersonId = NonEmployees.PersonId;
 
 #Select Queries
 select * from Employees;

@@ -53,7 +53,7 @@ let getMessageByEmpId = async(id)=>{
         
         await conn.connectAsync();
 
-        let sql = "SELECT * FROM Message WHERE EmpId = ?";
+        let sql = "Select Message.MsgId,Message.MsgDesc,Message.PersonId,Message.EmpId,Message.MsgType,Message.MsgDateTime,Message.MsgStatus,NonEmployees.PersonName from Message,NonEmployees where Message.EmpId = ? and Message.PersonId = NonEmployees.PersonId";
 
         const result = await conn.queryAsync(sql,[id]);
 

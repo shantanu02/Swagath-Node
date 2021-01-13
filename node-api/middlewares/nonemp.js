@@ -25,16 +25,16 @@ let getNonEmps = async()=>{
     }
 };
 
-let getNonEmp = async(id)=>{
-
+let getNonEmp = async(name)=>{
+    console.log(name);
     try {
         const conn =  mysql.createConnection(config);
         
         await conn.connectAsync();
 
-        let sql = "SELECT * FROM NonEmployees WHERE PersonId = ?";
+        let sql = "SELECT * FROM NonEmployees WHERE PersonName = ?";
 
-        const result = await conn.queryAsync(sql,[id]);
+        const result = await conn.queryAsync(sql,[name]);
 
         await conn.endAsync();
 
@@ -45,6 +45,27 @@ let getNonEmp = async(id)=>{
     }
 };
 
+let getNonEmpbyId = async(id)=>{
+    console.log("hello");
+    console.log(id);
+    try {
+        const conn =  mysql.createConnection(config);
+        
+        await conn.connectAsync();
+
+        let sql = "SELECT * FROM NonEmployees WHERE PersonId = ?";
+
+        const result = await conn.queryAsync(sql,[id]);
+
+       
+        await conn.endAsync();
+
+        return result[0];
+        
+    } catch (error) {
+        console.log(error);
+    }
+};
 
 
 let addNonEmp = async(input)=>{
@@ -54,10 +75,10 @@ let addNonEmp = async(input)=>{
         
         await conn.connectAsync();
 
-        let sql = "INSERT INTO NonEmployees VALUES(?,?,?,?,?,?,?)";
+        let sql = "INSERT INTO NonEmployees(PersonName,PersonEmail,PersonAddress,PersonPhone,PersonPhoto,PersonType) VALUES(?,?,?,?,?,?)";
 
         const result = await conn.queryAsync(sql,[
-            input.PersonId,
+           
             input.PersonName,
             input.PersonEmail,
             input.PersonAddress,
@@ -125,4 +146,4 @@ let deleteNonEmp = async(id)=>{
 
 
 
-module.exports = {getNonEmps,getNonEmp,addNonEmp,updateNonEmp,deleteNonEmp} ;
+module.exports = {getNonEmps,getNonEmp,addNonEmp,updateNonEmp,deleteNonEmp,getNonEmpbyId} ;
