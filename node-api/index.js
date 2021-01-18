@@ -4,7 +4,7 @@ const cors = require('cors');
 const employee = require('./routes/employee');
 const nonemp = require('./routes/nonemp');
 const message = require('./routes/message');
-
+const admin = require('./routes/admin');
 const app = express();
 
 //sequence of using functions in the pipelines is important
@@ -21,6 +21,7 @@ app.use(express.json());
 app.use('/api/employee',employee);
 app.use('/api/nonemp',nonemp);
 app.use('/api/message',message);
+app.use('/api/admin',admin);
 
 //set port 
 const port = process.env.PORT || 3000;

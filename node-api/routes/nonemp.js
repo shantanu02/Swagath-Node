@@ -14,26 +14,12 @@ router.get('/getNonEmps' , async (req, res) => {
     }
 });
 
-router.get('/getNonEmp/:name' , async (req, res) => {
+router.get('/getNonEmp/:id' , async (req, res) => {
     try {
-        console.log(req.params.name);
-        const result = await nonemp.getNonEmp(req.params.name);
+
+        const result = await nonemp.getNonEmp(req.params.id);
         
         res.send(result).status(200);
-
-    } catch (error) {
-        res.send(error.message).status(500);
-    }
-});
-
-router.get('/getNonEmpbyId/:id' , async (req, res) => {
-    try {
-        console.log("vipul");
-        const result = await nonemp.getNonEmpbyId(req.params.id);
-        
-        res.send(result).status(200);
-
-        console.log(result);
 
     } catch (error) {
         res.send(error.message).status(500);
